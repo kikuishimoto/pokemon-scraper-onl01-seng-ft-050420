@@ -2,7 +2,7 @@ class Pokemon
   attr_accessor :name, :type, :db
   attr_reader :id
   def initialize(id: nil, name:, type:, db:)
-    @ID = id
+    @id = id
     @name = name
     @type = type
     @db = db
@@ -13,7 +13,7 @@ class Pokemon
       VALUES (?,?)
     SQL
     db.execute(sql, name, type)
-    @ID = db.execute("SELECT last_insert_rowid() FROM pokemon")[0][0]
+    @id = db.execute("SELECT last_insert_rowid() FROM pokemon")[0][0]
   end
   def self.find(id, db)
     sql = <<-SQL
